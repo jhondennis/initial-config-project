@@ -11,5 +11,5 @@ _salir="salir"
 
 ## Para descargar
 ```
-curl -O https://github.com/jhondennis/initial-config-project/blob/main/initialConfig.sh
+curl -o initialConfig.sh https://raw.githubusercontent.com/jhondennis/initial-config-project/main/initialConfig.sh
 ```
