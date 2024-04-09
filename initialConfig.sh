@@ -9,19 +9,19 @@ BASE='\033[0m'
 # configuraciones
 success() {
     local message="$1"
-    echo "${SUCCESS}Success: ${message}${BASE}"
+    echo -e "${SUCCESS}Success: ${message}${BASE}"
 }
 error() {
     local message="$1"
-    echo "${ERROR}Error: ${message}${BASE}"
+    echo -e "${ERROR}Error: ${message}${BASE}"
 }
 info() {
     local message="$1"
-    echo "${INFO}Info: ${message}${BASE}"
+    echo -e "${INFO}Info: ${message}${BASE}"
 }
 warning() {
     local message="$1"
-    echo "${WARNING}Warning: ${message}${BASE}"
+    echo -e "${WARNING}Warning: ${message}${BASE}"
 }
 mostrar_titulos() {
     local titulos=($1)
@@ -70,14 +70,14 @@ header() {
             line_color="$BASE"
             ;;
     esac
-    echo "$line_color"
-    echo "----------------------------------------------------"
-    echo "$name"
+    warning "$line_color"
+    warning "----------------------------------------------------"
+    warning "$name"
     if [ -n "$description" ]; then
-        echo "$description"
+        warning "$description"
     fi
-    echo "----------------------------------------------------"
-    echo "$BASE"
+    warning "----------------------------------------------------"
+    warning "$BASE"
 }
 
 # funciones del escript
@@ -214,9 +214,9 @@ install_release_it() {
     npm install -D release-it
     npm install -D @release-it/conventional-changelog
 
-    echo "$archivo" > cofiguraciones.js
-    node cofiguraciones.js
-    rm cofiguraciones.js
+    echo "$archivo" > configuraciones.mjs
+    node configuraciones.mjs
+    rm configuraciones.mjs
 
     success "RELEASE IT intalacion finalizada"
 }
@@ -255,9 +255,9 @@ config_prettier() {
     })"
   
   header "Instalando PRETTIER" "Formateo de los archivos" "info"
-  echo "$file" > cofiguraciones.js
-  node cofiguraciones.js
-  rm cofiguraciones.js
+  echo "$file" > configuraciones.mjs
+  node configuraciones.mjs
+  rm configuraciones.mjs
   npm run format
   succes "PRETTIER Instalacion finalizada"
 }
